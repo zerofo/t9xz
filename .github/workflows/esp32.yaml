@@ -75,16 +75,16 @@ jobs:
           sudo -E echo "debug"
           sudo -E git clone https://github.com/zerofo/docker-8266-builder
           pwd
-          export WEBver=`grep emptytaboo ./t9xz/index.html | awk '{print $(NF-1)}'`
+          export WEBver=`grep emptytaboo ./t9xy/index.html | awk '{print $(NF-1)}'`
           sudo -E sed -i "s/ps4-zerofo/ps4-esp32s2-zerofo---全新破解代码-----github自动上传版本---底包-----${WEBver}--/g" ./docker-8266-builder/config.txt
           sudo -E cp ./docker-8266-builder/config.txt /config.txt
           sudo -E cp ./docker-8266-builder/mk32.sh /mk32.sh
           sudo -E cp -r ./docker-8266-builder/esp32_base /esp32_base
-          sudo -E rm ./t9xz/t9xz.git -rf
-          sudo -E sed -i 's#//esp32s2-log1-##' /t9xz/common/kexploit.js
-          sudo -E sed -i 's#//esp32s2-log2-##' /t9xz/common/kexploit.js
-          sudo -E sed -i 's#//esp32s2-log3-##' /t9xz/common/kexploit.js
-          sudo -E cp ./t9xz /mk32 -rf
+          sudo -E rm ./t9xy/t9xy.git -rf
+          sudo -E sed -i 's#//esp32s2-log1-##' /t9xy/common/kexploit.js
+          sudo -E sed -i 's#//esp32s2-log2-##' /t9xy/common/kexploit.js
+          sudo -E sed -i 's#//esp32s2-log3-##' /t9xy/common/kexploit.js
+          sudo -E cp ./t9xy /mk32 -rf
           sudo -E ls /mk32
           sudo -E rm /mk32/README.md
           sudo -E cp ./docker-8266-builder/esp32-wifi-http_async /Ps4-wifi-http -rf
@@ -92,10 +92,10 @@ jobs:
           sudo -E bash /mk32.sh
           sudo -E mkdir /900;
           sudo -E echo "zip file"
-          sudo -E zip -r /900/zerofo_900.zip ./t9xz -x"*/.git*"
+          sudo -E zip -r /900/zerofo_900.zip ./t9xy -x"*/.git*"
           sudo -E echo "upload"
           echo "upload"
-          ( if [ `cat t9xz/.github/packup` -eq 1 ]; then sudo -E BaiduPCS-Py upload /output/*.zip /8266/8266固件包---bin/900/; else echo "此commit 不打包"; fi;
+          ( if [ `cat t9xy/.github/packup` -eq 1 ]; then sudo -E BaiduPCS-Py upload /output/*.zip /8266/8266固件包---bin/900/; else echo "此commit 不打包"; fi;
            ) || ( echo "登录失败" )
       - name: upload binfile
         uses: actions/upload-artifact@v3
