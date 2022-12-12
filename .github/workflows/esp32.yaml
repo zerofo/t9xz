@@ -23,7 +23,7 @@ jobs:
            # 注意替换为你的 GitHub 源仓库地址
            source-repo: "git@github.com:zerofo/t9xz.git"
            # 注意替换为你的 Gitee 目标仓库地址
-           destination-repo: "git@gitee.com:zerofo/t9xz.git"
+           destination-repo: "git@gitee.com:zerofo/t9xy.git"
 #       - name: Mirror the Github organization repos to Gitee.
 #         uses: Yikun/hub-mirror-action@master
 #         with:
@@ -41,7 +41,7 @@ jobs:
            # 注意在 Settings->Secrets 配置 GITEE_PASSWORD
            gitee-password: ${{ secrets.GITEE_PASSWORD }}
            # 注意替换为你的 Gitee 仓库
-           gitee-repo: zerofo/t9xz
+           gitee-repo: zerofo/t9xy
            branch: t9xz
 
       - name: cleanup & env setup
