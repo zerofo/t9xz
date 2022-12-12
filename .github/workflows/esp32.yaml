@@ -86,7 +86,6 @@ jobs:
           sudo -E sed -i 's#//esp32s2-log3-##' ./t9xz/common/kexploit.js
           sudo -E cp ./t9xz /mk32 -rf
           sudo -E ls /mk32
-          sudo -E rm /mk32/README.md
           sudo -E cp ./docker-8266-builder/esp32-wifi-http_async /Ps4-wifi-http -rf
           sudo -E mkdir -p /output
           sudo -E bash /mk32.sh
