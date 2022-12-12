@@ -1,0 +1,29 @@
+<html manifest="cache.manifest">
+<head>
+    <meta charset="utf-8"/>
+<title>900专用破解网站 by zerofo</title>
+</head>
+<body>
+<h1 style='background-color:black;color:white;font-size:35px;text-align:center;'>900 专用破解网站 by zerofo</h1>
+<center>
+<h1 id=msgs></h1>
+</center>
+<hr/>
+<h1 style='font-size:35px;text-align:center;'>若完成离线缓存，将自动返回。</h1>
+<div style="margin: auto;text-align:center;width:200px; font-size:25px;color:white;background-color: red;"><b id="cached">使用缓存状态:??</b></div>
+  
+<script>
+function CacheProgress(e){Percent=(Math.round(e.loaded / e.total * 100));msgs.innerHTML="正在下载离线缓存(如长时间卡进度 请双清重启再试): " + Percent + "%";}
+function CachingDone(){setTimeout(function(){msgs.innerHTML="离线缓存 已成功，即将返回";},100)}
+window.applicationCache.addEventListener("progress",CacheProgress,false);window.applicationCache.oncached=function(e){CachingDone(); setTimeout(function(){window.location.href="./index.html";},1000)};
+
+if (window.applicationCache.status==0){
+    window.cached.innerHTML="未使用缓存"
+}
+else{
+    window.cached.style.backgroundColor="green";
+    window.cached.innerHTML="使用缓存";
+}
+</script>
+</body>
+</html>

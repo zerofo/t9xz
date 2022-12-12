@@ -1,0 +1,192 @@
+:root{
+--mainColor: black;
+--fontColor: #ffd700;
+--attendColor: black;
+--subColor: #ffd700;
+--spesColor: black;
+}
+/*
+:root[theme='WX']{
+--mainColor: #4d4d4d;
+--fontColor: white;
+--attendColor: #1AAD19;
+--subColor: #AAAAAA;
+--spesColor: #1AAD19;
+}*/
+body,html,div,table,a{
+text-align: center;
+margin: auto;
+}
+h1,h2,h3 {
+cursor:pointer;
+}
+/*.btn-twinkle{
+    animation: fade-in 6s alternate 1;
+    -webkit-animation: fade-in 6s alternate 1;
+}*/
+
+@keyframes fade-in {  
+    0% {opacity: 0;}/*初始状态 透明度为0*/  
+    40% {opacity: 0;}/*过渡状态 透明度为0*/  
+    100% {opacity: 1;}/*结束状态 透明度为1*/  
+}  
+@keyframes moving {  
+    from {left:  30%;}/*初始状态 透明度为0*/  
+    to {right: : 80%;}/*过渡状态 透明度为0*/  
+}  
+/*#fixedLayer{
+width:240px;
+padding-top: 20px;
+position:fixed;
+font-size: 20px;
+color: var(--fontColor);
+left:70%;
+top:1%;
+}*/
+@keyframes spin {
+from { transform: rotate(0deg); }
+to { transform: rotate(360deg); }
+}
+.processing {
+display: inline-block; border: 40px solid var(--subColor);
+border-radius: 100%;
+border-top: 40px solid var(--attendColor);
+border-left: 40px solid var(--attendColor);
+width: 60px;
+height: 60px;
+animation: spin 1s linear infinite;
+-webkit-animation: spin 1s linear infinite;
+
+}
+.select_btn {
+background-color:var(--mainColor);
+color:var(--fontColor);
+font-size: 18px;
+text-align: center;
+}
+.webname {
+margin: 0px;
+
+text-align:center;
+background-color:var(--mainColor);
+color:var(--fontColor);
+font-size:40px;
+padding:5px;
+}
+#usb{
+display: none;
+}
+#pl_switch{
+display: none;
+width:40px;
+height:110px;
+line-height:110px;
+}
+#onekey{
+	margin-top: 20px;
+}
+#oneclick{
+/*display: none;*/
+margin: 0px;
+height:105px;
+font-size: 30px;
+min-width:235px;
+text-decoration:none;
+}
+.dropbtn {
+background-color:var(--mainColor);
+color:var(--fontColor);
+font-size:20px;
+width:160px;
+height:65px;
+border:none;
+padding:5px;
+padding-top: 15px;
+
+}
+.dropdown {
+vertical-align: top;
+display:inline-table;
+}
+.dropdown-content {
+border-radius: 6px;
+display:none;
+position:absolute;
+border: 1px solid #000;
+background-color:var(--subColor);
+min-width:170px;
+margin-top:-20px;
+box-shadow:0px 16px 16px 0px rgba(0,0,0,0.2);
+}
+.pllink {
+border:none;
+border-radius: 6px;
+color:black;
+padding:12px 10px;
+text-decoration:none;
+display:block;
+font-size:20px;
+margin: 0px;
+}
+.pllink:hover {
+background-color:var(--attendColor);
+color:var(--fontColor);
+}
+#degree-title {
+min-width:140px;
+background-color:var(--mainColor);
+color:var(--fontColor);
+}
+.degree {
+min-width:170px;
+min-height: 50px;
+border:none;
+background-color:var(--subColor);
+color:var(--mainColor);
+}
+.diy-btn {
+border-radius: 6px;
+padding:0;
+outline:none;
+float:left;
+}
+.diy-drop {
+margin: 0 auto;
+height:65px;
+font-size: 23px;
+min-width:25px;
+border:none;
+background-color:var(--mainColor);
+color:var(--fontColor);
+border-radius: 6px;
+}
+.diy-dropdown-content {
+padding:0px;
+position:absolute;
+min-height: 55px;
+margin-top:-110px;
+margin-left:40px;
+}
+.link{
+min-width:160px;
+min-height: 30px;
+}
+.dropdown:hover .dropdown-content {
+display:block;
+z-index:1;
+}
+.dropdown:hover .dropbtn {
+background-color:var(--attendColor);
+color:var(--fontColor);
+}
+.diy-btn:hover {
+background-color:var(--attendColor);
+color:var(--fontColor);
+}
+.info_msgs {
+min-height:88px;
+font-size: 24px;
+}
+.cache {
+background-color:var(--spesColor);
+}

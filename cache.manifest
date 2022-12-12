@@ -1,0 +1,33 @@
+CACHE MANIFEST
+./pl/Orbis-Toolbox.bin
+./pl/backup.bin
+./pl/binload.bin
+./pl/restore.bin
+./pl/app-dumper.bin
+./pl/ghen2.bin
+./pl/kernel-clock.bin
+./pl/app2usb.bin
+./pl/enable-updates.bin
+./pl/enable-browser.bin
+./pl/module-dumper.bin
+./pl/history-blocker.bin
+./pl/rif-renamer.bin
+./pl/disable-aslr.bin
+./pl/disable-updates.bin
+./pl/permanent-uart.bin
+./pl/fan-threshold.bin
+./pl/ftp.bin
+./pl/miraloader.bin
+./pl/exit-idu.bin
+./pl/kernel-dumper.bin
+./pl/todex.bin
+./common/webkit.js
+./common/rop.js
+./common/int64.js
+./common/kexploit.js
+./common/function.js
+./css/style.css
+./index.html
+
+FALLBACK:
+. index.html

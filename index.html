@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<script src="./common/function.js" defer></script>
+<script src="./common/int64.js" defer></script>
+<script src="./common/rop.js" defer></script>
+<script src="./common/kexploit.js" defer></script>
+<script src="./common/webkit.js" defer></script>
+<link id="css" rel="stylesheet prefetch" href="css/style.css">
+<title>900 折腾网站 by zerofo</title>
+</head>
+<body>
+    <h1 class="webname"> 900 折腾网站 by zerofo</h1>
+<div class="status" style="-webkit-column-count:2;width: 80%;">
+<div style="text-align:center;width:200px; font-size:25px;color:green;"><b id="jb_times">成功次数: xx</b></div>
+
+<div style="text-align:center;width:200px; font-size:25px;color:red;"><b id="fail_times">失败次数: xx</b></div>
+</div>
+</div>
+<div style="clear: both; font-size: 0;">
+    <div class="dropdown">
+        <h2 class="dropbtn">常用</h2>
+        <div class="dropdown-content">
+            <h3 class='pllink' onclick="load_script('history-blocker');">禁用历史记录</h3>
+            <h3 class='pllink' onclick="load_script('ftp');">FTP</h3>
+            <h3 class='pllink' onclick="load_script('todex');">toDEX</h3>
+            <h3 class='pllink' onclick="load_script('kernel-clock');">内核时间修复</h3>
+            <h3 class='pllink' onclick="load_script('disable-aslr');">关闭随机地址</h3>
+            <h3 class='pllink' onclick="load_script('app-dumper');">Dumper</h3>
+            <h3 class='pllink' onclick="load_script('rif-renamer');">RIF 重命名</h3>
+            <h3 class='pllink' onclick="load_script('miraLoader');">MiraLoader<br>(9021)</h3>
+        </div>
+    </div>
+    <div class="dropdown">
+        <h2 class="dropbtn">风扇调速</h2>
+        <div class="dropdown-content">
+            <div style="display: inline-block;">
+                <h3 id="degree-title">目标温度</h3>
+                <select id="degree" class="degree select_btn">
+                <option value=79 > 默认79 </option>
+                <script>
+                let select = document.getElementById("degree");
+                let option = document.createElement("OPTION");
+                for(var i=55; i<=100; i+=5){
+                let select = document.getElementById("degree");
+                let option = document.createElement("OPTION");
+                select.options.add(option);
+                option.text = i;
+                option.value = i;}
+                </script>
+                </select>
+                <h3 class='pllink' onclick="load_script('fan-threshold');">设置</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <h2 class="dropbtn">数据备份<br>更新开关</h2>
+        <div class="dropdown-content">
+            <h3 class='pllink' onclick="load_script('disable-updates');">关闭更新</h3>
+            <h3 class='pllink' onclick="load_script('enable-updates');">开启更新</h3>
+            <h3 class='pllink' onclick="load_script('backup');">数据库备份</h3>
+            <h3 class='pllink' onclick="load_script('restore');">数据库恢复</h3>
+        </div>
+    </div>
+    <div class="dropdown">
+        <h2 class="dropbtn">其他</h2>
+        <div class="dropdown-content" >
+            <h3 class='pllink' onclick="load_script('kernel-dumper');">内核 Dumper</h3>
+            <h3 class='pllink' onclick="load_script('module-dumper');">模组 Dumper</h3>
+            <h3 class='pllink' onclick="load_script('permanent-uart');">UART</h3>
+            <h3 class='pllink' onclick="load_script('exit-idu');">退出IDU</h3>
+            <h3 class='pllink' onclick="load_script('app2usb');">App2USB</h3>
+        </div>
+    </div>
+    <div class="dropdown">
+        <h2 class="dropbtn cache" >离线缓存</h2>
+        <div class="dropdown-content">
+            <a class='pllink' href="./cache.html">(点我)开启<br>离线缓存</a>
+        </div>
+    </div>
+</div>
+
+<h1 id="titleONE" >一键⇩折腾</h1>
+<div style="clear: both; font-size: 0;">
+<div id='onekey' style="display:inline-block;">
+    <h3 id="oneclick" class="dropbtn diy-btn btn-twinkle" style="padding-top: 4px;" onclick="load_jb();" value='ghen2'>SiSTRo<br>GHen225</h3>
+    <div class="dropdown">
+    <h2 id="pl_switch" class="diy-drop btn-twinkle">▶</h2>
+    <div class="dropdown-content diy-dropdown-content">
+        <h3 class='link pllink' onclick="change_oneclick('oneclick','SiSTRo<br>GHen225', 'ghen2');">SiSTRo<br>GHen225</h3>
+        <h3 class='link pllink' onclick="change_oneclick('oneclick','MiraLoader<br>(9021)', 'miraLoader');">MiraLoader<br>(9021)</h3>
+
+    </div>
+    </div>
+</div>
+</div>
+
+    <h2 id="msgs" style="min-height:50px;font-size: 36px;" ></h2>
+<h6>破解代码来自:
+<a href="https://github.com/ChendoChap/pOOBs4">ChendoChap</a>,
+sleirsgoevy,
+Znullptr,
+Specter,
+SiSTRo,
+leeful...
+</h6>
+</div>
+<div style="width: 70%;">
+    
+<hr>问题反馈 emptytaboo@gmail.com 或者 加贴吧的主机折腾-微信群 v2.4t <br>
+大家好, 我zerofo, 网站 仅用于 个人交流学习. 不以此牟利, 亦未因此获取任何利益.<br>
+同时本人 不代工 做工具(可能在交流过程中, 有一些实验代码范例, 都是没有收费), 不收费式交流学习,<br>
+您支付的任何费用与本人无关.
+</div>
+</div>
+<script>
+fail_times = Number(localStorage.getItem("fail_times"))||0;
+jb_times = Number(localStorage.getItem("jb_times"))||0;
+
+document.getElementById("fail_times").innerHTML="失败次数: "+String(fail_times);
+document.getElementById("jb_times").innerHTML="成功次数: "+String(jb_times);
+var IdMap = ["SiSTRo<br>GHen225","ghen2"];
+var Name=localStorage.getItem("oneclickName");
+var Value=localStorage.getItem("oneclickVAL");
+if (Name==null||Value==null){Name=IdMap[0]; Value=IdMap[1];}
+
+document.getElementById("oneclick").innerHTML=Name;
+document.getElementById("oneclick").value=Value;
+
+document.getElementById('oneclick').style.display='block';
+document.getElementById('pl_switch').style.display='block';
+// jb_done=sessionStorage.getItem('jb_done');
+// if (jb_done == '1') 
+// {
+//     window.orbis.style.display='block';
+//     window.titleONE.style.display='none';
+//     document.getElementById('oneclick').style.display='none';
+//     document.getElementById('pl_switch').style.display='none';
+// }
+window.twice = sessionStorage.getItem("clickjb");
+ if (twice != null) alert("重启PS4 再试, 否则无限内存不足.");
+
+    
+</script>
+</body>
+</html>
