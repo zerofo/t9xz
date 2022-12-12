@@ -1,0 +1,74 @@
+name: upload32
+
+on:
+  push:
+    branches: [ t9zx ]
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    if: github.event.repository.owner.id == github.event.sender.id
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: t9zx
+      - name: cleanup & env setup
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: |
+          sudo -E apt update
+          sudo -E apt install git curl tar make libgcrypt-dev gcc srecord zip python3-pip gzip wget python3-dev -y
+          sudo -E pip3 install Cython peewee toml pyserial
+          sudo -E pip3 install BaiduPCS-Py
+          sudo -E curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sudo -E BINDIR=/bin sh
+          sudo -E curl -sSLo mklittlefs.tar.gz https://github.com/earlephilhower/mklittlefs/releases/download/3.0.0/x86_64-linux-gnu-mklittlefs-295fe9b.tar.gz 
+          sudo -E tar xfz mklittlefs.tar.gz -C /bin/ --strip-components=1
+          sudo -E rm mklittlefs.tar.gz
+          
+          sudo -E arduino-cli config init && sudo -E arduino-cli config add board_manager.additional_urls https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_dev_index.json
+          sudo -E arduino-cli config set library.enable_unsafe_install true
+          sudo -E arduino-cli core update-index --additional-urls https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_dev_index.json
+          sudo -E arduino-cli core install esp32:esp32
+          sudo -E arduino-cli core upgrade 
+          sudo -E arduino-cli lib install --git-url https://github.com/me-no-dev/AsyncTCP.git
+          sudo -E arduino-cli lib install --git-url https://github.com/me-no-dev/ESPAsyncWebServer.git
+          sudo -E arduino-cli lib upgrade 
+          sudo -E apt-get -y autoremove --purge
+          sudo -E apt-get clean
+          echo "login Pan"
+          ( BaiduPCS-Py useradd --account_name "Zerofo_tang" --cookies '${{ secrets.BD_COOKIE }}' --bduss "${{ secrets.BD_USS }}" ) || ( echo "登录失败" )
+      - name: build 
+        run: |
+          cd ../
+          sudo -E echo "debug"
+          sudo -E git clone https://github.com/zerofo/docker-8266-builder
+          pwd
+          export WEBver=`grep emptytaboo ./t9xz/index.html | awk '{print $(NF-1)}'`
+          sudo -E sed -i "s/ps4-zerofo/ps4-esp32s2-zerofo---全新破解代码-----github自动上传版本---底包-----${WEBver}--/g" ./docker-8266-builder/config.txt
+          sudo -E cp ./docker-8266-builder/config.txt /config.txt
+          sudo -E cp ./docker-8266-builder/mk32.sh /mk32.sh
+          sudo -E cp -r ./docker-8266-builder/esp32_base /esp32_base
+          sudo -E rm ./t9xz/t9xz.git -rf
+          sudo -E sed -i 's#//esp32s2-log1-##' /t9xz/common/kexploit.js
+          sudo -E sed -i 's#//esp32s2-log2-##' /t9xz/common/kexploit.js
+          sudo -E sed -i 's#//esp32s2-log3-##' /t9xz/common/kexploit.js
+          sudo -E cp ./t9xz /mk32 -rf
+          sudo -E ls /mk32
+          sudo -E rm /mk32/README.md
+          sudo -E cp ./docker-8266-builder/esp32-wifi-http_async /Ps4-wifi-http -rf
+          sudo -E mkdir -p /output
+          sudo -E bash /mk32.sh
+          sudo -E mkdir /900;
+          sudo -E echo "zip file"
+          sudo -E zip -r /900/zerofo_900.zip ./t9xz -x"*/.git*"
+          sudo -E echo "upload"
+          echo "upload"
+          ( if [ `cat t9xz/.github/packup` -eq 1 ]; then sudo -E BaiduPCS-Py upload /output/*.zip /8266/8266固件包---bin/900/; else echo "此commit 不打包"; fi;
+           ) || ( echo "登录失败" )
+      - name: upload binfile
+        uses: actions/upload-artifact@v3
+        with:
+          name: ps4-esp32s2-bin------------github自动上传版本
+          path: /output/
