@@ -2,7 +2,7 @@ name: upload32
 
 on:
   push:
-    branches: [ t9zx ]
+    branches: [ t9xz ]
 jobs:
   build:
     runs-on: ubuntu-22.04
@@ -13,7 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          ref: t9zx
+          ref: t9xz
       - name: cleanup & env setup
         env:
           DEBIAN_FRONTEND: noninteractive
