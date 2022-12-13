@@ -77,7 +77,7 @@ jobs:
           pwd
           export WEBver=`grep emptytaboo ./t9xz/index.html | awk '{print $(NF-1)}'`
           sudo -E sed -i "s/ps4-zerofo/ps4-esp32s2-zerofo---全新破解代码-----github自动上传版本---底包-----${WEBver}--/g" ./docker-8266-builder/config.txt
-          sudo -E sed -i "s/compress=\"y\"/compress=\"n\"/g" ./docker-8266-builder/config.txt
+          sudo -E echo "compress='y'" > ./docker-8266-builder/config.txt
           sudo -E cp ./docker-8266-builder/config.txt /config.txt
           sudo -E cp ./docker-8266-builder/mk32s2.sh /mk32s2.sh
           sudo -E cp -r ./docker-8266-builder/esp32_base /esp32_base
