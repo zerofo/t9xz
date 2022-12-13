@@ -82,8 +82,8 @@ jobs:
           sudo -E cp -r ./docker-8266-builder/esp32_base /esp32_base
           sudo -E rm ./t9xz/t9xz.git -rf
           sudo -E sed -i 's#//esp32s2-log1-##' ./t9xz/common/kexploit.js
-          #sudo -E sed -i 's#//esp32s2-log2-##' ./t9xz/common/kexploit.js
-          sudo -E sed -i 's#//.*esp32s2-log2-.*#\(async function\(){#' ./t9xz/common/kexploit.js
+          sudo -E sed -i 's#//esp32s2-log2-##' ./t9xz/common/kexploit.js
+          #sudo -E sed -i 's#//.*esp32s2-log2-.*#\(async function\(){#' ./t9xz/common/kexploit.js
           sudo -E sed -i 's#//esp32s2-log3-##' ./t9xz/common/kexploit.js
           sudo -E cp ./t9xz /mk32 -rf
           sudo -E ls /mk32
