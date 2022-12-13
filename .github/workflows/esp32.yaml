@@ -95,7 +95,7 @@ jobs:
           sudo -E zip -r /900/zerofo_900.zip ./t9xz -x"*/.git*"
           sudo -E echo "upload"
           echo "upload"
-          ( if [ `cat t9xz/.github/packup` -eq 1 ]; then sudo -E BaiduPCS-Py upload /output/*.zip /8266/8266固件包---bin/900/; else echo "此commit 不打包"; fi;
+          ( if [ `cat t9xz/.github/packup` -eq 1 ]; then sudo -E BaiduPCS-Py upload /output/*.zip /PS4相关工具固件/8266_esp32s2固件包---bin/900/; else echo "此commit 不打包"; fi;
            ) || ( echo "登录失败" )
       - name: upload binfile
         uses: actions/upload-artifact@v3
