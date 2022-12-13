@@ -24,15 +24,7 @@ jobs:
            source-repo: "git@github.com:zerofo/t9xz.git"
            # 注意替换为你的 Gitee 目标仓库地址
            destination-repo: "git@gitee.com:zerofo/t9xy.git"
-#       - name: Mirror the Github organization repos to Gitee.
-#         uses: Yikun/hub-mirror-action@master
-#         with:
-#           src: zerofo/t9xz
-#           dst: zerofo/t9xz
-#           dst_key: ${{ secrets.GITEE_RSA_PRIVATE_KEY }}
-#           dst_token: ${{ secrets.GITEE_TOKEN }}
-#           clone_style: "ssh"
-#           force_update: true
+
       - name: Build Gitee Pages
         uses: yanglbme/gitee-pages-action@master
         with:
