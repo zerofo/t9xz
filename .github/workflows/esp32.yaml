@@ -90,4 +90,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ps4-esp32s2-bin------------github自动上传版本
-          path: /output/
+          path: /output/*.zip
