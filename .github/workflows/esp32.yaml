@@ -60,7 +60,7 @@ jobs:
           sudo -E apt-get -y autoremove --purge
           sudo -E apt-get clean
           echo "login Pan"
-          ( BaiduPCS-Py useradd --account_name "Zerofo_tang" --cookies '${{ secrets.BD_COOKIE }}' --bduss "${{ secrets.BD_USS }}" ) || ( echo "登录失败" )
+          ( BaiduPCS-Py useradd --account_name "Zerofo_tang" --cookies '${{ secrets.BD_COOKIE }}' --bduss "${{ secrets.BD_USS }}" ) || ( echo "登录成功" )
       - name: build 
         run: |
           cd ../
@@ -85,7 +85,7 @@ jobs:
           sudo -E echo "upload"
           echo "upload"
           ( if [ `cat t9xz/.github/packup` -eq 1 ]; then sudo -E BaiduPCS-Py upload /output/*.zip /PS4相关工具固件/8266_esp32s2固件包---bin/900/; else echo "此commit 不打包"; fi;
-           ) || ( echo "登录失败" )
+           ) || ( echo "上传成功" )
       - name: upload binfile
         uses: actions/upload-artifact@v3
         with:
